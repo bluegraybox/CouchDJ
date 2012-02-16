@@ -34,7 +34,20 @@ $(function() {
             }
         });
     };
-    drawItems();
+    // drawItems();
+    function showTracks() {
+        db.view(design + "/all-tracks", {
+            limit : 50,
+            update_seq : true,
+            success : function(data) {
+                var them = $.mustache($("#all-tracks").html(), {
+                    tracks : data.rows.map(function(r) {return r.value;})
+                });
+                $("#content").html(them);
+            }
+        });
+    };
+    showTracks();
     var changesRunning = false;
     function setupChanges(since) {
         if (!changesRunning) {
@@ -43,6 +56,7 @@ $(function() {
             changeHandler.onChange(drawItems);
         }
     }
+    /*
     $.couchProfile.templates.profileReady = $("#new-message").html();
     $("#account").couchLogin({
         loggedIn : function(r) {
@@ -63,4 +77,5 @@ $(function() {
             $("#profile").html('<p>Please log in to see your profile.</p>');
         }
     });
+    */
  });

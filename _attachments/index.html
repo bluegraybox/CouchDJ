@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example CouchApp</title>
+    <title>CouchDJ</title>
     <link rel="stylesheet" href="style/main.css" type="text/css">
   </head>
   <body>
-    <div id="account"></div>
+    <h1>CouchDJ</h1>
 
-    <h1>Example CouchApp</h1>
-
-    <div id="profile">
-    </div>
     <div id="content"></div>
-
-    <div id="sidebar">
-      <p>Edit welcome message.</p>
-      <p>Ideas: You could easily turn this into a photo sharing app, 
-          or a grocery list, or a chat room. <a href="https://github.com/couchapp/example">Code for this app is on Github.</a></p>
-    </div>
   </body>
-  <script src="/_utils/script/sha1.js"></script>
-  <script src="/_utils/script/json2.js"></script>
-  <script src="/_utils/script/jquery.js"></script>
-  <script src="/_utils/script/jquery.couch.js"></script>
+  <script src="vendor/couchdb/sha1.js"></script>
+  <script src="vendor/couchdb/json2.js"></script>
+  <script src="vendor/couchdb/jquery.js"></script>
+  <script src="vendor/couchdb/jquery.couch.js"></script>
   <script src="vendor/couchapp/jquery.couchLogin.js"></script>
   <script src="vendor/couchapp/jquery.couchProfile.js"></script>
   <script src="vendor/couchapp/md5.js"></script>
@@ -60,6 +50,16 @@
         </ul>
         <p><em>Protip:</em> If you setup continuous replication between this database and a remote one, this list will reflect remote changes in near real-time.</p>
         <p>This would be a good place to add pagination.</p>
+  </script>
+
+  <script id="all-tracks" type="text/x-mustache" charset="utf-8">
+        {{#tracks}}
+        <h3><a href="{{url}}">{{track}}</a></h3>
+        <ul id="tracks">
+            <li>artist: {{artist}}</li>
+            <li>album: {{album}}</li>
+        </ul>
+        {{/tracks}}
   </script>
   <script src="script/app.js"></script>
 
