@@ -53,13 +53,16 @@
   </script>
 
   <script id="all-tracks" type="text/x-mustache" charset="utf-8">
+      <table>
+        <thead><th>Track</th><th>Artist</th><th>Album</th></thead>
         {{#tracks}}
-        <h3><a href="{{url}}">{{track}}</a></h3>
-        <ul id="tracks">
-            <li>artist: {{artist}}</li>
-            <li>album: {{album}}</li>
-        </ul>
+        <tr>
+          <td><a href="{{url}}">{{track}}</a></td>
+          <td>{{artist}}</td>
+          <td>{{album}}</td>
+        </tr>
         {{/tracks}}
+      </table>
   </script>
   <script src="script/app.js"></script>
 

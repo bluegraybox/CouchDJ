@@ -72,3 +72,8 @@ div.avatar img {
 ul {
   list-style: none;
 }
+
+td {
+  padding: 10px 30px;
+  background: #ccf;
+}
