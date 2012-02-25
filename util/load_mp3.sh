@@ -14,7 +14,8 @@ while test -n "$file" ; do
     path=${path//[^A-Za-z0-9]/-}
     echo "Loading $path"
     rev=$(curl -s $base_url/$path | sed 's/.*"_rev":"\([^"]*\)".*/\1/;')
-    if test -n "$rev" ; then
+    if "$rev" != '{"error":"not_found","reason":"missing"}' ; then
+        echo "rev=$rev"
         echo "Deleting old document"
         curl -X DELETE $base_url/$path?rev=$rev
     fi
